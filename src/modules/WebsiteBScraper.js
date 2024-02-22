@@ -34,6 +34,28 @@ class WebsiteBScraper extends WebsiteCrawler {
             return posts[0].querySelector('.s-post-summary--stats-item').innerText;
         })
     }
+
+    async getLatestBlogTitleFromPages(pages) {
+        const hardLimit = 10;
+        const latestBlogTitleFromPages = [];
+        for ( let currentPageNumber = 1; currentPageNumber <= pages && currentPageNumber <= hardLimit; currentPageNumber++){
+            const latestBlogTitle = await this.getLatestBlogTitle();
+            latestBlogTitleFromPages.push({
+                'page': currentPageNumber,
+                'Blog Title': latestBlogTitle,
+            })
+            await this.gotoNextPage();
+        }
+        await this.goToPage(this.mainURL);
+        return latestBlogTitleFromPages;
+    }
+
+    async gotoNextPage() {
+        await Promise.all([
+            this.waitForLoad(),
+            this.page.click('.s-pagination--item.js-pagination-item:last-of-type')
+        ]);
+    }
 }
 
 module.exports = WebsiteBScraper;

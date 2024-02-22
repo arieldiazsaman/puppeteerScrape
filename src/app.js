@@ -1,6 +1,8 @@
 const fs = require('fs');
 const { WebsiteAScraper, WebsiteBScraper } = require('./modules/scrapers');
 
+require('dotenv').config()
+
 const scrapeWebsiteA = async () => {
     const nisseiPage = new WebsiteAScraper();
     await nisseiPage.openBrowser();
@@ -24,10 +26,14 @@ const scrapeWebsiteB = async () => {
     const latestBlogAuthor = await stackoverflowPage.getLatestBlogAuthor();
     const latestBlogTitle = await stackoverflowPage.getLatestBlogTitle();
     const numberOfCommentsFromLatestBlog = await stackoverflowPage.getNumberOfCommentsFromLatestBlog();
-    const scrapedData = {
+    let scrapedData = {
         'Author of the latest blog post': latestBlogAuthor,
         'Title of the latest blog post': latestBlogTitle,
         'Number of comments on the post': numberOfCommentsFromLatestBlog,
+    }
+    if (process.env.STACK_OVERFLOW_NEXT_PAGES) {
+        const latestBlogTitleFromPages = await stackoverflowPage.getLatestBlogTitleFromPages(process.env.STACK_OVERFLOW_NEXT_PAGES);
+        scrapedData.latestBlogTitleFromPages = latestBlogTitleFromPages;
     }
     await stackoverflowPage.closeBrowser();
     return scrapedData;

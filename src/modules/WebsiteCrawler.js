@@ -4,6 +4,7 @@ class WebsiteCrawler {
     constructor() {
         this.browser = null;
         this.page = null;
+        this.mainURL = null;
     }
 
     async openBrowser() {
@@ -13,7 +14,11 @@ class WebsiteCrawler {
 
     async goToPage(url) {
         if (!this.browser) throw new Error('The browser was not initialized.');
-        await this.page.goto(url);
+        this.mainURL = url;
+        await Promise.all([
+            this.waitForLoad(),
+            this.page.goto(url)
+        ]);
     }
 
     async waitForLoad() {

@@ -1,0 +1,58 @@
+{
+  "scrappedWebsiteA": {
+    "Title of the current page": "Comprá Chocolates | Chocolates Amargos | Chocolates Premium en Paraguay - Envios a todo el Paraguay",
+    "List of product names on the page": [
+      "Amandita Rellena de Crema de Cacao - 200gr",
+      "Chocolate Ritter Sport Leche con Alpina - 100gr",
+      "Chocolate Godiva Dark 85% - 100gr",
+      "Chocolate Nestlé Alpino - 90 gramos",
+      "Chocolate Nestlé Alpino Black Top - 90 gramos",
+      "Chocolate KitKat Milk & Cocoa - 41.5 gramos"
+    ],
+    "Price of each product": [
+      {
+        "product": "Amandita Rellena de Crema de Cacao - 200gr",
+        "price": "Gs.  18.000"
+      },
+      {
+        "product": "Chocolate Ritter Sport Leche con Alpina - 100gr",
+        "price": "Gs.  24.666"
+      },
+      {
+        "product": "Chocolate Godiva Dark 85% - 100gr",
+        "price": "Gs.  40.362"
+      },
+      {
+        "product": "Chocolate Nestlé Alpino - 90 gramos",
+        "price": "Gs.  14.000"
+      },
+      {
+        "product": "Chocolate Nestlé Alpino Black Top - 90 gramos",
+        "price": "Gs.  17.042"
+      },
+      {
+        "product": "Chocolate KitKat Milk & Cocoa - 41.5 gramos",
+        "price": "Gs.  6.954"
+      }
+    ]
+  },
+  "scrappedWebsiteB": {
+    "Author of the latest blog post": "PrinceKajuku",
+    "Title of the latest blog post": "numpy.gradient gives unexpected results",
+    "Number of comments on the post": "0\nvotes",
+    "latestBlogTitleFromPages": [
+      {
+        "page": 1,
+        "Blog Title": "numpy.gradient gives unexpected results"
+      },
+      {
+        "page": 2,
+        "Blog Title": "Method takes too long to return data"
+      },
+      {
+        "page": 3,
+        "Blog Title": "Array can store single types of data in python but why array store different data type if we specify dtype = object"
+      }
+    ]
+  }
+}
