@@ -10,4 +10,5 @@ const WebsiteAScraper = require('./WebsiteAScraper');
     console.log(`Title of the current page: ${ pageTitle }`);
     console.log(`List of product names on the page: ${ JSON.stringify(productNames) }`);
     console.log(`Price of each product: ${ JSON.stringify(productNamesAndPrices) }`);
+    await nisseiPage.closeBrowser();
 })();

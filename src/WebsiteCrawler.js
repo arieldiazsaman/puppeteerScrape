@@ -15,7 +15,7 @@ class WebsiteCrawler {
         if (!this.browser) {
             throw new Error('The browser was not initialized.');
         }
-        await this.page.goto(url, { waitUntil: 'networkidle2' });
+        await this.page.goto(url);
     }
 
     async waitForLoad() {
