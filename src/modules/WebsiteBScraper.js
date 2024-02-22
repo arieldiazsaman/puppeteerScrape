@@ -46,7 +46,7 @@ class WebsiteBScraper extends WebsiteCrawler {
             })
             await this.gotoNextPage();
         }
-        await this.goToPage(this.mainURL);
+        await this.goToPage(this.mainURL, 1);
         return latestBlogTitleFromPages;
     }
 

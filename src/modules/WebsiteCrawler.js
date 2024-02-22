@@ -12,13 +12,10 @@ class WebsiteCrawler {
         this.page = await this.browser.newPage();
     }
 
-    async goToPage(url) {
+    async goToPage(url, attempts = 1) {
         if (!this.browser) throw new Error('The browser was not initialized.');
         this.mainURL = url;
-        await Promise.all([
-            this.waitForLoad(),
-            this.page.goto(url)
-        ]);
+        await this.retryConnection(attempts)
     }
 
     async waitForLoad() {
@@ -27,10 +24,24 @@ class WebsiteCrawler {
     }
 
     async closeBrowser() {
-        if (this.browser){
+        if (this.browser) {
             await this.browser.close();
             this.browser = null;
             this.page = null;
+        }
+    }
+
+    async retryConnection(attempts) {
+        try {
+            return await Promise.all([
+                this.waitForLoad(),
+                this.page.goto(this.mainURL)
+            ]);
+        } catch (error) {
+            if (attempts - 1 <= 0) throw error;
+            console.error(`Failed page connection. ${attempts - 1} attempts left`, error);
+            await new Promise(resolve => setTimeout(resolve, 5000));
+            return await this.retryConnection(attempts - 1);
         }
     }
 }

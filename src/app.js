@@ -3,10 +3,12 @@ const { WebsiteAScraper, WebsiteBScraper } = require('./modules/scrapers');
 
 require('dotenv').config()
 
+const attempts = process.env.RETRY_CONNECTION_ATTEMPTS
+
 const scrapeWebsiteA = async () => {
     const nisseiPage = new WebsiteAScraper();
     await nisseiPage.openBrowser();
-    await nisseiPage.goToPage('https://nissei.com/py/bebidas/alimentos/chocolates/');
+    await nisseiPage.goToPage('https://nissei.com/py/bebidas/alimentos/chocolates/', attempts);
     const pageTitle = await nisseiPage.getCurrentPageTitle();
     const productNames = await nisseiPage.getProductNames();
     const productNamesAndPrices = await nisseiPage.getProductPrices();
@@ -22,7 +24,7 @@ const scrapeWebsiteA = async () => {
 const scrapeWebsiteB = async () => {
     const stackoverflowPage = new WebsiteBScraper();
     await stackoverflowPage.openBrowser();
-    await stackoverflowPage.goToPage('https://stackoverflow.com/questions/');
+    await stackoverflowPage.goToPage('https://stackoverflow.com/questions/', attempts);
     const latestBlogAuthor = await stackoverflowPage.getLatestBlogAuthor();
     const latestBlogTitle = await stackoverflowPage.getLatestBlogTitle();
     const numberOfCommentsFromLatestBlog = await stackoverflowPage.getNumberOfCommentsFromLatestBlog();
