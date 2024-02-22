@@ -12,16 +12,12 @@ class WebsiteCrawler {
     }
 
     async goToPage(url) {
-        if (!this.browser) {
-            throw new Error('The browser was not initialized.');
-        }
+        if (!this.browser) throw new Error('The browser was not initialized.');
         await this.page.goto(url);
     }
 
     async waitForLoad() {
-        if(!this.page) {
-            throw new Error('The page was not initialized');
-        }
+        if(!this.page) throw new Error('The page was not initialized');
         await this.page.waitForNavigation({ waitUntil: 'networkidle0' });
     }
 
