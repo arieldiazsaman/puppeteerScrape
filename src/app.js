@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { WebsiteAScraper, WebsiteBScraper } = require('./modules/scrapers');
+const { WebsiteAScraper, WebsiteBScraper, WebsiteCScraper } = require('./modules/scrapers');
 
 require('dotenv').config()
 
@@ -41,8 +41,17 @@ const scrapeWebsiteB = async () => {
     return scrapedData;
 }
 
+const scrapeWebsiteC = async () => {
+    const mockLoginPage = new WebsiteCScraper();
+    await mockLoginPage.openBrowser();
+    await mockLoginPage.goToPage('https://www.stealmylogin.com/demo.html', attempts);
+    await mockLoginPage.login();
+    await mockLoginPage.closeBrowser();
+}
+
 const main = async () => {
     try {
+        await scrapeWebsiteC();
         const scrappedWebsiteA = await scrapeWebsiteA();
         const scrappedWebsiteB = await scrapeWebsiteB();
         const scrapedData = {
