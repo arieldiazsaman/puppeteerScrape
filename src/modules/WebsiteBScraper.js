@@ -5,6 +5,9 @@ class WebsiteBScraper extends WebsiteCrawler {
         super();
     }
 
+    /**
+     * @returns The Author from the latest blog
+     */
     async getLatestBlogAuthor() {
         return await this.page.evaluate(() => {
             const posts = Array.from(
@@ -15,6 +18,9 @@ class WebsiteBScraper extends WebsiteCrawler {
         })
     }
 
+    /**
+    * @returns The title from the latest blog
+    */
     async getLatestBlogTitle() {
         return await this.page.evaluate(() => {
             const posts = Array.from(
@@ -25,6 +31,9 @@ class WebsiteBScraper extends WebsiteCrawler {
         })
     }
 
+    /**
+    * @returns The number of comments from the latest blog
+    */
     async getNumberOfCommentsFromLatestBlog() {
         return await this.page.evaluate(() => {
             const posts = Array.from(
@@ -35,6 +44,9 @@ class WebsiteBScraper extends WebsiteCrawler {
         })
     }
 
+    /**
+    * @returns A list with the latest blog title from each page
+    */
     async getLatestBlogTitleFromPages(pages) {
         const hardLimit = 10;
         const latestBlogTitleFromPages = [];

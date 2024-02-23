@@ -5,6 +5,9 @@ require('dotenv').config()
 
 const attempts = process.env.RETRY_CONNECTION_ATTEMPTS
 
+/**
+ * Scrapes chocolate options from a local online store
+ */
 const scrapeWebsiteA = async () => {
     const nisseiPage = new WebsiteAScraper();
     await nisseiPage.openBrowser();
@@ -21,6 +24,9 @@ const scrapeWebsiteA = async () => {
     return scrapedData;
 }
 
+/**
+ * Scrapes the stackoverflow's questions page
+ */
 const scrapeWebsiteB = async () => {
     const stackoverflowPage = new WebsiteBScraper();
     await stackoverflowPage.openBrowser();
@@ -41,6 +47,9 @@ const scrapeWebsiteB = async () => {
     return scrapedData;
 }
 
+/**
+ * A demonstration of a login procedure
+ */
 const scrapeWebsiteC = async () => {
     const mockLoginPage = new WebsiteCScraper();
     await mockLoginPage.openBrowser();

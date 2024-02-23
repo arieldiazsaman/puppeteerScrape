@@ -5,10 +5,16 @@ class WebsiteAScraper extends WebsiteCrawler {
         super();
     }
 
+    /**
+     * @returns The title from the current page
+     */
     async getCurrentPageTitle() {
         return this.page.title();
     }
 
+    /**
+     * @returns A list with the names of the products
+     */
     async getProductNames() {
         return await this.page.evaluate(() => {
             return Array.from(
@@ -19,6 +25,9 @@ class WebsiteAScraper extends WebsiteCrawler {
         })
     }
 
+    /**
+     * @returns A list with the prices for each product
+     */
     async getProductPrices() {
         const productNames = await this.getProductNames();
         return await this.page.evaluate((productNames) => {

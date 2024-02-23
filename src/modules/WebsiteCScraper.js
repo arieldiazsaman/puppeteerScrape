@@ -5,6 +5,9 @@ class WebsiteCScraper extends WebsiteCrawler {
         super();
     }
 
+    /**
+     * A demonstration of a login procedure
+     */
     async login() {
         await this.page.screenshot({ path: '1beforeloggingin.png' });
         await Promise.all([

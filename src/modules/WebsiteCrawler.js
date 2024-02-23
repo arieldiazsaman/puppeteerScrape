@@ -1,5 +1,8 @@
 const puppeteer = require('puppeteer');
 
+/**
+ * Base class for generic web crawling functionalities
+ */
 class WebsiteCrawler {
     constructor() {
         this.browser = null;
